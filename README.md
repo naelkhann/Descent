@@ -16,6 +16,8 @@ In addition, I hope to get to :
 ##Wireframes
 The app will consist of a single center positioned Canvas with a undetermined height/width. The view will be in portrait, so the height will be much greater than the width. There will be links on the bottom to my personal content (LinkedIn, GitHub, etc.)
 
+![Wireframe of Descent](https://github.com/naelkhann/Descent/blob/master/Untitled%20Diagram.png "Descent")
+
 ##Architecture and Technologies
 The project will be done with :
 - Javascript
