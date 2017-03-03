@@ -19,6 +19,7 @@
     "createjs-easeljs": "^0.8.2",
     "easeljs": "0.0.0",
     "gulp": "^3.9.1",
+    "lodash": "^4.17.4",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.4.1"
   }
