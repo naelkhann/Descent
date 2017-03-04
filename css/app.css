@@ -1,15 +1,24 @@
+h1, h2, h3, h4 {
+  font-family: 'VT323', monospace;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
-  background-color: rgb(9, 10, 31);
+  background: rgb(7, 16, 33);
+  background: linear-gradient(to right, rgb(25, 25, 26), rgb(0, 0, 0));
 }
 
 #title {
   color: rgb(227, 138, 81);
-  font-size: 36px;
+  padding: 10px 0;
+  font-size: 40px;
+  font-weight: normal;
   text-transform: uppercase;
 }
 
