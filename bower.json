@@ -1,0 +1,22 @@
+{
+  "name": "Descent",
+  "description": "",
+  "main": "./lib/descent.js",
+  "authors": [
+    "Nael <naelkhann@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://naelkhann.github.io/Descent",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "typed.js": "^1.1.4",
+    "jquery": "^3.1.1"
+  }
+}

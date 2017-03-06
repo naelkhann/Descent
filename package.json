@@ -16,6 +16,7 @@
     "babel-core": "^6.23.1",
     "babel-loader": "^6.3.2",
     "babel-preset-es2015": "^6.22.0",
+    "bower": "^1.8.0",
     "createjs-easeljs": "^0.8.2",
     "easeljs": "0.0.0",
     "gulp": "^3.9.1",

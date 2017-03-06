@@ -3,13 +3,34 @@
   <head>
     <meta charset="utf-8">
     <title>Descent</title>
+    <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="./bower_components/typed.js/dist/typed.min.js"></script>
     <script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
     <script src="./lib/bundle.js" type="text/javascript"></script>
     <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
     <link href="./css/app.css" rel="stylesheet" type="text/css" />
+    <link href="./assets/images/favicon.png" rel="icon" type="image/png" />
   </head>
   <body>
     <h1 id="title">Descent</h1>
+    <div id="start-screen">
+      <script>
+        $(function(){
+          $("#start-screen-typed").typed({
+            stringsElement: $("#start-screen-strings")
+          });
+        });
+      </script>
+      <div id="start-screen-strings">
+        <p>We need your help, star pilot.</p>
+        <p>Enter the domain where no man has survived.</p>
+        <p>Enter Descent.</p>
+      </div>
+      <span id="start-screen-typed"></span>
+    </div>
+    <div id="start-screen-buttons">
+      <button id="start-screen-new-game">Start</button>
+    </div>
     <canvas id="myCanvas" width="450" height="700"></canvas>
   </body>
 </html>
