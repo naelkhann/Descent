@@ -43,10 +43,21 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  cursor: pointer;
 }
 
 #start-screen-typed{
   font-size: 30px;
+  font-family: 'VT323', monospace;
+}
+
+#start-screen-instructions {
+  width: 450px;
+}
+
+#start-screen-instructions p{
+  color: rgb(227, 138, 81);
+  font-size: 24px;
   font-family: 'VT323', monospace;
 }
 
