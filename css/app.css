@@ -45,8 +45,14 @@ body {
   align-items: flex-end;
 }
 
-#start-screen-new-game{
+#start-screen-new-game, #start-screen-howto{
+  padding: 0 20px;
   cursor: pointer;
+  outline: none;
+}
+
+#start-screen-new-game:hover, #start-screen-howto:hover{
+  color: rgb(78, 160, 227);
 }
 
 #start-screen-typed{
@@ -57,6 +63,7 @@ body {
 #start-screen-instructions {
   width: 450px;
   height: 100px;
+  display: none;
 }
 
 #start-screen-instructions p{
@@ -69,6 +76,13 @@ body {
   font-size: 22px;
 }
 
+#game-over-screen {
+  width: 450px;
+  height: 100px;
+  margin-top: 50px;
+
+}
+
 .game-over-type{
   color: rgb(227, 138, 81);
   font-size: 30px;
@@ -79,4 +93,5 @@ body {
   border: 1px solid #000;
   display: none;
   background-image: url('./../assets/images/starfield.gif');
+  cursor: none;
 }
