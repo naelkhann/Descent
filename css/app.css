@@ -43,6 +43,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-end;
+}
+
+#start-screen-new-game{
   cursor: pointer;
 }
 
