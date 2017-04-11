@@ -1,38 +1,86 @@
 # Descent
-A top-down space shooter game built in Javascript w/ Easel JS &amp; more. Descent is a 2D vertical scrolling action game in which you use a spaceship to take out enemy aliens in your way. The game has three levels - the last with an ending boss fight - and the ability to pickup powerups that give timed boosts to your arsenal of lasers and rockets. Inspired by Raptor: Call of the Shadows.
-
-## Functionality & MVPs
-- [ ] Have a menu screen to start the game, pause music, and show directions
-- [ ] Start out initial scrolling with a lower velocity to help beginners learn
-- [ ] Key controls to move player spaceship (W, A, S, D or Arrow Keys)
-- [ ] Generate max five enemies on screen that shoot in a pre-determined pattern
-- [ ] Detect shot collisions, player spaceship collisions.
-- [ ] Finish level screen
-
-In addition, I hope to get to :
-- [ ] Boss level, bigger enemy with multiple patterned shots
-- [ ] Powerup pickup to change player spaceship shooting behavior
-
-## Wireframes
-The app will consist of a single center positioned Canvas with a undetermined height/width. The view will be in portrait, so the height will be much greater than the width. There will be links on the bottom to my personal content (LinkedIn, GitHub, etc.)
-
-![Wireframe of Descent](https://github.com/naelkhann/Descent/blob/master/Untitled%20Diagram.png "Descent")
+A top-down space shooter game built in Javascript w/ Easel JS &amp; more. Descent is a 2D vertical scrolling action game in which you use a spaceship to take out enemy aliens in your way. Inspired by Space Invaders. Try to get a high score by taking out enemy ships!
 
 ## Architecture and Technologies
-The project will be done with :
-- Javascript
-- jQuery
-- Easel JS, to manipulate the canvas and have library methods to create game focused on features
-- Webpack will bundle all javascripts into one bundle file to serve
+Descent is built with JavaScript and a few popular JavaScript libraries :
+- jQuery : To manipulate DOM elements for menus and starting a new game instance.
+- Easel JS : To help manipulate HTML Canvas elements, like sprites, shape objects, and game texts
+- Webpack : Using webpack's powerful asset bundler processes, allowing classes to work concurrently and not have to use Require JS.
 
-`board.js`: Will handle the background and visualize the actual scrolling. Initial level will be desert themed. The board will handle collision detection.
-`spaceship.js`: Will handle the ship movement and shot pellet generation
-`enemy.js`: Will handle enemy automated movement and shot pellet generation.
+## Classes
+`game.js`: Handles the background and visualize the actual scrolling. Handles bullet generation, enemy generation, score count, and many of the games core features.
+`spaceship.js`: Handles ship sprite construction, collision detection, and bullet generation.
+`bullet.js` : Handles bullet object construction and collision detection.
+`enemy.js`: Handles enemy movement and sprite construction.
+
+## Implementation
+### Bullet Generation
+Similar to retro plane shooters from the 90s, Descent revolves around the idea that your ship shoots bullets on mouse down and continues shooting until the mouse button is released. Descent uses an interval to determine a limited bullet generation. On mouse up, the interval is then cleared:
+
+```javascript
+this.ship.shape.on("mousedown", (e) => {
+  this.bulletInterval = setInterval(() => {
+    let bullet = new Bullet(this.stage,
+      this.ship,
+      (this.ship.shape.x + 20),
+      this.ship.shape.y,
+      this.enemies,
+      Util.generateId(),
+      window.score);
+    this.bullets[bullet.id] = bullet;
+  }, 150);
+});
+
+this.ship.shape.on("pressup", (e) => {
+  clearInterval(this.bulletInterval);
+});
+```
+
+### Consistent FPS
+Descent uses the EaselJS library, and in doing so, has access to the powerful `tick` event handler. This event handler allows any EaselJS stage updates to happen at a consistent frame per second - allowing for smooth and consistent gameplay at 60FPS.
+
+This is implemented by adding any methods that update the stage to the `tick` event listener as a callback:
+
+```javascript
+//SCORE UPDATE
+this.stage.addEventListener("tick", this.scoreUpdate);
+//GAMEOVER ADD EVENTS
+this.stage.addEventListener("tick", this.gameOver);
+//ENEMIES
+this.stage.addEventListener("tick", this.generateEnemies);
+```
+
+### Enemy Generation
+Enemies are generated on a Game instance via the `generateEnemies()` method:
+
+```javascript
+generateEnemies(){
+  if(Object.keys(this.enemies).length < 1){
+    for(let i = 0; i < 5; i ++){
+      let enemy = new Enemy(stage, Util.generateId());
+      this.enemies[enemy.id] = enemy;
+    }
+  }
+}
+```
+
+This creates Enemy objects after all enemies have been cleared from the Canvas. Enemies are generated at random X positions:
+
+```javascript
+generateRandomX(){
+  let num = Math.floor(Math.random() * (410 - 5) + 5);
+  let coinFlip = Math.floor(Math.random() * 2);
+  if (coinFlip == 1){
+    return num + Math.floor(Math.random() * 20)
+  } else {
+    return num - Math.floor(Math.random() * 20)
+  }
+}
+```
 
 
-## Implementation Timeline
-**Day 1**: Setup directory with proper dependencies using NPM. Get successful webpack of dependencies and generate small objects to test. Review Easel JS documentation and guides to generate Canvas board of desired size. Render `Spaceship` object. Temporary image on `Board` to get vertical scrolling. Focus to handle `Spaceship` movement with arrow or W,A,S,D key inputs by end of day.
-
-**Day 2**: Render `Spaceship` shot pellets and generate small block to test collision detection. Ensure collision detection works before moving on to render `Enemy` object. Render `Enemy` shot pellets and automate pattern. Create automated (time-based) `Enemy` generator.
-
-**Day 3**: Implement level end conditions to win/lose level. Implement menu to start or game, read directions on how to play. Learn to implement custom music on page. Style `Board` more fittingly and clean (desert theme). Begin work on bonus features.
+## Future Updates
+Descent is still under development.
+**Currently In Progress** : Enemy position generation in specific grids
+- Music/Sound Effects
+- Boss Fight
