@@ -62,7 +62,6 @@ body {
 
 #start-screen-instructions {
   width: 450px;
-  height: 100px;
   display: none;
 }
 
@@ -94,4 +93,30 @@ body {
   display: none;
   background-image: url('./../assets/images/starfield.gif');
   cursor: none;
+}
+
+#footer {
+  width: 500px;
+  position: fixed;
+  bottom: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-content: flex-end;
+  color: white;
+}
+
+#footer a {
+  text-decoration: none;
+  color: white;
+  transition: color, 0.2s, ease;
+}
+
+#footer a:hover {
+  color: rgb(227, 138, 81);
+}
+
+#footer h3 {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  padding-top: 7px;
 }
