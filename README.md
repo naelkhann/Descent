@@ -1,4 +1,5 @@
 # Descent
+[Live Link](https://naelkhann.github.io/Descent)
 A top-down space shooter game built in Javascript w/ Easel JS &amp; more. Descent is a 2D vertical scrolling action game in which you use a spaceship to take out enemy aliens in your way. Inspired by Space Invaders. Try to get a high score by taking out enemy ships!
 
 ![Descent Menu](https://github.com/naelkhann/Descent/raw/master/assets/images/descent_menu.gif)
